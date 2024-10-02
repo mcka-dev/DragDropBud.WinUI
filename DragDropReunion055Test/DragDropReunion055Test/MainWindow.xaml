@@ -9,8 +9,8 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
           AllowDrop="True" 
-          DragOver="grid_DragOver" 
-          Drop="grid_Drop">
+          DragOver="Grid_DragOver" 
+          Drop="Grid_Drop">
 
         <Grid Margin="10,10,10,10">
 

@@ -1,10 +1,7 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Imaging;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Graphics.Imaging;
@@ -12,24 +9,24 @@ using Windows.Storage;
 
 namespace DragDropReunion055Test
 {
-  
     public sealed partial class MainWindow : Window
     {
         public MainWindow()
         {
-            this.InitializeComponent();
+            InitializeComponent();
 
             ExtendsContentIntoTitleBar = true;
 
-            fillTree1();
+            FillTree1();
         }
-        private void fillTree1()
+
+        private void FillTree1()
         {
-            TreeViewNode node = new TreeViewNode { Content = "Root", IsExpanded = true };
+            TreeViewNode node = new() { Content = "Root", IsExpanded = true };
             treeView1.RootNodes.Add(node);
         }
 
-        private void grid_DragOver(object sender, DragEventArgs e)
+        private void Grid_DragOver(object sender, DragEventArgs e)
         {
             try
             {
@@ -54,7 +51,7 @@ namespace DragDropReunion055Test
             }
         }
 
-        private async void grid_Drop(object sender, DragEventArgs e)
+        private async void Grid_Drop(object sender, DragEventArgs e)
         {
             try
             {
@@ -63,13 +60,13 @@ namespace DragDropReunion055Test
                     var items = await e.DataView.GetStorageItemsAsync();
                     if (items.Count > 0)
                     {
-                        List<StorageFile> filesToOpen = new List<StorageFile>();
+                        List<StorageFile> filesToOpen = [];
                         for (int i = 0; i < items.Count; i++)
                         {
                             var storageFile = items[i] as StorageFile;
                             string filePath = storageFile.Path;
 
-                            TreeViewNode node = new TreeViewNode { Content = filePath };
+                            TreeViewNode node = new() { Content = filePath };
                             treeView1.RootNodes[0].Children.Add(node);
                         }
                     }
@@ -93,7 +90,7 @@ namespace DragDropReunion055Test
 
             try
             {
-                if (!(sender is TextBlock tbl))
+                if (sender is not TextBlock tbl)
                 {
                     args.Cancel = true;
                     return;
@@ -117,10 +114,7 @@ namespace DragDropReunion055Test
             {
                 deferral.Complete();
             }
-
-
         }
-
 
         public static async Task<SoftwareBitmap> GetDragBitmap(FrameworkElement element)
         {
