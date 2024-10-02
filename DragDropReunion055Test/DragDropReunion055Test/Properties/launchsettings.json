@@ -1,0 +1,10 @@
+﻿{
+  "profiles": {
+    "DragDropReunion055Test (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "DragDropReunion055Test (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

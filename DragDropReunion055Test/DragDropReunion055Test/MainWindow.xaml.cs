@@ -18,6 +18,9 @@ namespace DragDropReunion055Test
         public MainWindow()
         {
             this.InitializeComponent();
+
+            ExtendsContentIntoTitleBar = true;
+
             fillTree1();
         }
         private void fillTree1()
